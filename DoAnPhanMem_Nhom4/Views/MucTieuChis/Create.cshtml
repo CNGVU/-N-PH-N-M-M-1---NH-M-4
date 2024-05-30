@@ -1,0 +1,43 @@
+﻿@model DoAnPhanMem_Nhom4.Models.MucTieuChi
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>MucTieuChi</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdMuc" class="control-label"></label>
+                <input asp-for="IdMuc" class="form-control" />
+                <span asp-validation-for="IdMuc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TenMuc" class="control-label"></label>
+                <input asp-for="TenMuc" class="form-control" />
+                <span asp-validation-for="TenMuc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DiemToiDa" class="control-label"></label>
+                <input asp-for="DiemToiDa" class="form-control" />
+                <span asp-validation-for="DiemToiDa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,44 @@
+﻿@model DoAnPhanMem_Nhom4.Models.NoiDungTieuChi
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>NoiDungTieuChi</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdNoiDung" />
+            <div class="form-group">
+                <label asp-for="IdMuc" class="control-label"></label>
+                <select asp-for="IdMuc" class="form-control" asp-items="ViewBag.IdMuc"></select>
+                <span asp-validation-for="IdMuc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TenNoiDung" class="control-label"></label>
+                <input asp-for="TenNoiDung" class="form-control" />
+                <span asp-validation-for="TenNoiDung" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DiemToiDa" class="control-label"></label>
+                <input asp-for="DiemToiDa" class="form-control" />
+                <span asp-validation-for="DiemToiDa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

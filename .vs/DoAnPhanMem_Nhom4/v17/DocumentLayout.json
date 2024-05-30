@@ -1,0 +1,121 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\Workspace\\DH_SPKT\\223\\DoAnPhanMem\\Code\\DoAnPhanMem_Nhom4\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0B57B8BF-089B-49A6-9B57-7D646B5F9C5C}|DoAnPhanMem_Nhom4\\DoAnPhanMem_Nhom4.csproj|e:\\workspace\\dh_spkt\\223\\doanphanmem\\code\\doanphanmem_nhom4\\doanphanmem_nhom4\\controllers\\gvcnscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B57B8BF-089B-49A6-9B57-7D646B5F9C5C}|DoAnPhanMem_Nhom4\\DoAnPhanMem_Nhom4.csproj|solutionrelative:doanphanmem_nhom4\\controllers\\gvcnscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B57B8BF-089B-49A6-9B57-7D646B5F9C5C}|DoAnPhanMem_Nhom4\\DoAnPhanMem_Nhom4.csproj|e:\\workspace\\dh_spkt\\223\\doanphanmem\\code\\doanphanmem_nhom4\\doanphanmem_nhom4\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B57B8BF-089B-49A6-9B57-7D646B5F9C5C}|DoAnPhanMem_Nhom4\\DoAnPhanMem_Nhom4.csproj|solutionrelative:doanphanmem_nhom4\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B57B8BF-089B-49A6-9B57-7D646B5F9C5C}|DoAnPhanMem_Nhom4\\DoAnPhanMem_Nhom4.csproj|e:\\workspace\\dh_spkt\\223\\doanphanmem\\code\\doanphanmem_nhom4\\doanphanmem_nhom4\\views\\diemrenluyens\\assessmentcommitteescore.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0B57B8BF-089B-49A6-9B57-7D646B5F9C5C}|DoAnPhanMem_Nhom4\\DoAnPhanMem_Nhom4.csproj|solutionrelative:doanphanmem_nhom4\\views\\diemrenluyens\\assessmentcommitteescore.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B57B8BF-089B-49A6-9B57-7D646B5F9C5C}|DoAnPhanMem_Nhom4\\DoAnPhanMem_Nhom4.csproj|e:\\workspace\\dh_spkt\\223\\doanphanmem\\code\\doanphanmem_nhom4\\doanphanmem_nhom4\\controllers\\sinhvienscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B57B8BF-089B-49A6-9B57-7D646B5F9C5C}|DoAnPhanMem_Nhom4\\DoAnPhanMem_Nhom4.csproj|solutionrelative:doanphanmem_nhom4\\controllers\\sinhvienscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B57B8BF-089B-49A6-9B57-7D646B5F9C5C}|DoAnPhanMem_Nhom4\\DoAnPhanMem_Nhom4.csproj|e:\\workspace\\dh_spkt\\223\\doanphanmem\\code\\doanphanmem_nhom4\\doanphanmem_nhom4\\views\\lops\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0B57B8BF-089B-49A6-9B57-7D646B5F9C5C}|DoAnPhanMem_Nhom4\\DoAnPhanMem_Nhom4.csproj|solutionrelative:doanphanmem_nhom4\\views\\lops\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B57B8BF-089B-49A6-9B57-7D646B5F9C5C}|DoAnPhanMem_Nhom4\\DoAnPhanMem_Nhom4.csproj|e:\\workspace\\dh_spkt\\223\\doanphanmem\\code\\doanphanmem_nhom4\\doanphanmem_nhom4\\views\\sinhviens\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0B57B8BF-089B-49A6-9B57-7D646B5F9C5C}|DoAnPhanMem_Nhom4\\DoAnPhanMem_Nhom4.csproj|solutionrelative:doanphanmem_nhom4\\views\\sinhviens\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GvcnsController.cs",
+              "DocumentMoniker": "E:\\Workspace\\DH_SPKT\\223\\DoAnPhanMem\\Code\\DoAnPhanMem_Nhom4\\DoAnPhanMem_Nhom4\\Controllers\\GvcnsController.cs",
+              "RelativeDocumentMoniker": "DoAnPhanMem_Nhom4\\Controllers\\GvcnsController.cs",
+              "ToolTip": "E:\\Workspace\\DH_SPKT\\223\\DoAnPhanMem\\Code\\DoAnPhanMem_Nhom4\\DoAnPhanMem_Nhom4\\Controllers\\GvcnsController.cs",
+              "RelativeToolTip": "DoAnPhanMem_Nhom4\\Controllers\\GvcnsController.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAzwCQAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-30T02:04:03.122Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "E:\\Workspace\\DH_SPKT\\223\\DoAnPhanMem\\Code\\DoAnPhanMem_Nhom4\\DoAnPhanMem_Nhom4\\Controllers\\LoginController.cs",
+              "RelativeDocumentMoniker": "DoAnPhanMem_Nhom4\\Controllers\\LoginController.cs",
+              "ToolTip": "E:\\Workspace\\DH_SPKT\\223\\DoAnPhanMem\\Code\\DoAnPhanMem_Nhom4\\DoAnPhanMem_Nhom4\\Controllers\\LoginController.cs",
+              "RelativeToolTip": "DoAnPhanMem_Nhom4\\Controllers\\LoginController.cs",
+              "ViewState": "AQIAACwAAAAAAAAAAAAgwFMAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-30T02:05:35.743Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AssessmentCommitteeScore.cshtml",
+              "DocumentMoniker": "E:\\Workspace\\DH_SPKT\\223\\DoAnPhanMem\\Code\\DoAnPhanMem_Nhom4\\DoAnPhanMem_Nhom4\\Views\\DiemRenLuyens\\AssessmentCommitteeScore.cshtml",
+              "RelativeDocumentMoniker": "DoAnPhanMem_Nhom4\\Views\\DiemRenLuyens\\AssessmentCommitteeScore.cshtml",
+              "ToolTip": "E:\\Workspace\\DH_SPKT\\223\\DoAnPhanMem\\Code\\DoAnPhanMem_Nhom4\\DoAnPhanMem_Nhom4\\Views\\DiemRenLuyens\\AssessmentCommitteeScore.cshtml",
+              "RelativeToolTip": "DoAnPhanMem_Nhom4\\Views\\DiemRenLuyens\\AssessmentCommitteeScore.cshtml",
+              "ViewState": "AQIAAF0AAAAAAAAAAAAAAIwAAABCAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-30T02:03:27.619Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\Workspace\\DH_SPKT\\223\\DoAnPhanMem\\Code\\DoAnPhanMem_Nhom4\\DoAnPhanMem_Nhom4\\Views\\Lops\\Index.cshtml",
+              "RelativeDocumentMoniker": "DoAnPhanMem_Nhom4\\Views\\Lops\\Index.cshtml",
+              "ToolTip": "E:\\Workspace\\DH_SPKT\\223\\DoAnPhanMem\\Code\\DoAnPhanMem_Nhom4\\DoAnPhanMem_Nhom4\\Views\\Lops\\Index.cshtml",
+              "RelativeToolTip": "DoAnPhanMem_Nhom4\\Views\\Lops\\Index.cshtml",
+              "ViewState": "AQIAAFQAAAAAAAAAAAAAAGsAAACLAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-29T08:42:56.88Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\Workspace\\DH_SPKT\\223\\DoAnPhanMem\\Code\\DoAnPhanMem_Nhom4\\DoAnPhanMem_Nhom4\\Views\\SinhViens\\Index.cshtml",
+              "RelativeDocumentMoniker": "DoAnPhanMem_Nhom4\\Views\\SinhViens\\Index.cshtml",
+              "ToolTip": "E:\\Workspace\\DH_SPKT\\223\\DoAnPhanMem\\Code\\DoAnPhanMem_Nhom4\\DoAnPhanMem_Nhom4\\Views\\SinhViens\\Index.cshtml",
+              "RelativeToolTip": "DoAnPhanMem_Nhom4\\Views\\SinhViens\\Index.cshtml",
+              "ViewState": "AQIAAF0AAAAAAAAAAAAAAGMAAABCAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-28T16:30:16.207Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SinhViensController.cs",
+              "DocumentMoniker": "E:\\Workspace\\DH_SPKT\\223\\DoAnPhanMem\\Code\\DoAnPhanMem_Nhom4\\DoAnPhanMem_Nhom4\\Controllers\\SinhViensController.cs",
+              "RelativeDocumentMoniker": "DoAnPhanMem_Nhom4\\Controllers\\SinhViensController.cs",
+              "ToolTip": "E:\\Workspace\\DH_SPKT\\223\\DoAnPhanMem\\Code\\DoAnPhanMem_Nhom4\\DoAnPhanMem_Nhom4\\Controllers\\SinhViensController.cs",
+              "RelativeToolTip": "DoAnPhanMem_Nhom4\\Controllers\\SinhViensController.cs",
+              "ViewState": "AQIAACcAAAAAAAAAAAAYwDkAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-28T16:20:31.065Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

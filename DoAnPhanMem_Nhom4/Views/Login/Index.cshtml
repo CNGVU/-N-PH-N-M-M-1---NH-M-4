@@ -1,0 +1,62 @@
+﻿@model DoAnPhanMem_Nhom4.Models.VMLogin;
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Login</title>
+
+	<!--	<link href="<c:url value='images/logos/logo.png' />" rel="icon">-->
+	<link rel="stylesheet" href="/css/form.css">
+</head>
+
+<body>
+
+	<div class="wrapper">
+		<form asp-controller="Login" asp-action="Index" method="post">
+
+			<h1>Login</h1> 
+			@if (ViewData["ValidateMessage"] != null)
+			{
+				<br />
+				<br />
+				<p style="padding: 14px 0 0 32px; color: red;text-align: center;">@ViewData["ValidateMessage"]</p>
+				 
+			}
+			<div class="input-box">
+				<div class="bg-light rounded h-100 p-4">
+					<select name="Role" class="form-select mb-3" aria-label="Default select example">
+						<option selected>Chọn vai trò</option>
+						<option value="sinh-vien">Sinh viên</option>
+						<option value="ban-can-su">Ban cán sự</option>
+						<option value="giang-vien-chu-nhiem">Giảng viên chủ nhiệm</option>
+						<option value="khoa">Khoa</option>
+						<option value="phong-cong-tac-sinh-vien">Phòng công tác sinh viên</option>
+						<option value="hoi-dong-danh-gia">Hội đồng đánh giá</option>
+					</select>
+				</div>
+			</div>
+			<div class="input-box">
+				<input type="text" placeholder="Username" asp-for="Username"
+					   required>
+			</div>
+			<div class="input-box">
+				<input class="password" type="password" placeholder="Password" asp-for="Password"
+					    required>
+			</div>
+			 
+
+			<button type="submit" class="btn">OK</button>
+			 
+
+		</form>
+	</div>
+ 
+</body>
+
+</html>

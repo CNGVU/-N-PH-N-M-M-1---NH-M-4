@@ -1,0 +1,41 @@
+﻿@model IEnumerable<DoAnPhanMem_Nhom4.Models.NoiDungTieuChi>
+
+@{
+    ViewData["Title"] = "Insert";
+}
+
+<h1>Insert</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TenNoiDung)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiemToiDa)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenNoiDung)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiemToiDa)
+            </td>
+                
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdNoiDung">Edit</a> 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
