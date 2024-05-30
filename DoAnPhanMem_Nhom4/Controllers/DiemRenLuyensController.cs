@@ -24,7 +24,7 @@ namespace DoAnPhanMem_Nhom4.Controllers
         }
 
         
-        public IActionResult AssessmentCommitteeScore(string id )
+        public IActionResult AssessmentCommitteeScore(string id, string idhocky)
         {
             var dbQuanLyDiemRenLuyenContext = _context.DiemRenLuyens.Include(d => d.IdHocKy).Include(d => d.IdMinhChung).Include(d => d.IdNoiDung).Include(d => d.IdSv);
             var result = from drl in _context.DiemRenLuyens
@@ -35,7 +35,7 @@ namespace DoAnPhanMem_Nhom4.Controllers
                          join mc in _context.MinhChungs on drl.IdMinhChung equals mc.Id
                          join lop in _context.Lops on sv.IdLop equals lop.IdLop
                          join khoa in _context.Khoas on lop.IdKhoa equals khoa.IdKhoa
-                         where sv.IdSv == id 
+                         where sv.IdSv == id && hk.IdHocKy == idhocky
                          select new
                          {
                              MaSV = sv.IdSv,
@@ -94,7 +94,7 @@ namespace DoAnPhanMem_Nhom4.Controllers
             return RedirectToAction(nameof(AssessmentCommitteeScore), new { id = diems.First().MaSV }); // Chuyển hướng sau khi lưu thành công
         }
         
-        public IActionResult FacultyScore(string id)
+        public IActionResult FacultyScore(string id, string idhocky)
         {
             var dbQuanLyDiemRenLuyenContext = _context.DiemRenLuyens.Include(d => d.IdHocKy).Include(d => d.IdMinhChung).Include(d => d.IdNoiDung).Include(d => d.IdSv);
             var result = from drl in _context.DiemRenLuyens
@@ -105,7 +105,7 @@ namespace DoAnPhanMem_Nhom4.Controllers
                          join mc in _context.MinhChungs on drl.IdMinhChung equals mc.Id
                          join lop in _context.Lops on sv.IdLop equals lop.IdLop
                          join khoa in _context.Khoas on lop.IdKhoa equals khoa.IdKhoa
-                         where sv.IdSv == id
+                         where sv.IdSv == id && hk.IdHocKy == idhocky
                          select new
                          {
                              MaSV = sv.IdSv,
@@ -164,7 +164,7 @@ namespace DoAnPhanMem_Nhom4.Controllers
         }
 
         ////
-        public IActionResult StudentScore(string id)
+        public IActionResult StudentScore(string id, string hockyID)
         {
             var dbQuanLyDiemRenLuyenContext = _context.DiemRenLuyens.Include(d => d.IdHocKy).Include(d => d.IdMinhChung).Include(d => d.IdNoiDung).Include(d => d.IdSv);
             var result = from drl in _context.DiemRenLuyens
@@ -175,7 +175,7 @@ namespace DoAnPhanMem_Nhom4.Controllers
                          join mc in _context.MinhChungs on drl.IdMinhChung equals mc.Id
                          join lop in _context.Lops on sv.IdLop equals lop.IdLop
                          join khoa in _context.Khoas on lop.IdKhoa equals khoa.IdKhoa
-                         where sv.IdSv == id
+                         where sv.IdSv == id && hk.IdHocKy == hockyID
                          select new
                          {
                              MaSV = sv.IdSv,

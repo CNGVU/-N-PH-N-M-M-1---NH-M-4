@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Home Page";
     var userID = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+    var hockyID = User.FindFirst(ClaimTypes.GroupSid)?.Value;
 
 }
 <!-- Content Start -->
@@ -43,7 +44,7 @@
         <div class="row vh-100 bg-light rounded align-items-center justify-content-center mx-0">
             <div class="col-md-6 text-center">
                 
-                <a asp-controller="DiemRenLuyens" asp-action="StudentScore" asp-route-id="@userID" class="dropdown-item">Chấm điểm rèn luyện</a>
+                <a asp-controller="DiemRenLuyens" asp-action="StudentScore" asp-route-id="@userID" asp-route-hockyID="@hockyID" class="dropdown-item">Chấm điểm rèn luyện</a>
             </div>
         </div>
     </div>

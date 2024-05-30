@@ -39,12 +39,24 @@ namespace DoAnPhanMem_Nhom4.Controllers
 
 				if (modelLogin.Role == "sinh-vien")
 				{
-					var user = await _context.SinhViens.Where(a=> a.TenDangNhap == modelLogin.Username && a.MatKhau == modelLogin.Password 
-																&& a.BanCanSu == "0" ).FirstOrDefaultAsync();
+					//	var user = await _context.SinhViens.Where(a=> a.TenDangNhap == modelLogin.Username && a.MatKhau == modelLogin.Password 
+					//										&& a.BanCanSu == "0" ).Include(a=>a.DiemRenLuyens).FirstOrDefaultAsync();
+					var user = (from sinhvien in _context.SinhViens
+							   join diemrenluyen in _context.DiemRenLuyens on sinhvien.IdSv equals diemrenluyen.IdSv
+							   join hocky in _context.HocKies on diemrenluyen.IdHocKy equals hocky.IdHocKy
+							   where sinhvien.TenDangNhap == modelLogin.Username && sinhvien.MatKhau == modelLogin.Password && sinhvien.BanCanSu == "0"
+							   select new
+							   {
+								   TenDangNhap = sinhvien.TenDangNhap,
+								   IdSinhVien = sinhvien.IdSv,
+								   IdHocKy = diemrenluyen.IdHocKy
+
+							   }).OrderByDescending(a=>a.IdHocKy).FirstOrDefault();
 					if(user != null)
 					{
                         claims.Add(new Claim(ClaimTypes.Name, user.TenDangNhap));
-                        claims.Add(new Claim(ClaimTypes.NameIdentifier, user.IdSv));
+                        claims.Add(new Claim(ClaimTypes.GroupSid, user.IdHocKy));
+                        claims.Add(new Claim(ClaimTypes.NameIdentifier, user.IdSinhVien));
                         claims.Add(new Claim(ClaimTypes.Role, "sinh-vien"));
                         controllerName = "SinhViens"; 
                         actionName = "Home";
@@ -52,23 +64,52 @@ namespace DoAnPhanMem_Nhom4.Controllers
 				}
 				else if (modelLogin.Role == "ban-can-su")
 				{
-					var user = await _context.SinhViens.Where(a => a.TenDangNhap == modelLogin.Username && a.MatKhau == modelLogin.Password
-																&& a.BanCanSu == "1").FirstOrDefaultAsync();
-					claims.Add(new Claim(ClaimTypes.Name, user.TenDangNhap));
-					claims.Add(new Claim(ClaimTypes.NameIdentifier, user.IdSv));
-					controllerName = "DiemRenLuyens";
-					actionName = "";
-				}
+                    var user = (from sinhvien in _context.SinhViens
+                                join diemrenluyen in _context.DiemRenLuyens on sinhvien.IdSv equals diemrenluyen.IdSv
+                                join hocky in _context.HocKies on diemrenluyen.IdHocKy equals hocky.IdHocKy
+                                where sinhvien.TenDangNhap == modelLogin.Username && sinhvien.MatKhau == modelLogin.Password && sinhvien.BanCanSu == "1"
+                                select new
+                                {
+                                    TenDangNhap = sinhvien.TenDangNhap,
+                                    IdSinhVien = sinhvien.IdSv,
+                                    IdHocKy = diemrenluyen.IdHocKy
+                                }).FirstOrDefault();
+                    if (user != null)
+                    {
+                        claims.Add(new Claim(ClaimTypes.Name, user.TenDangNhap));
+                        claims.Add(new Claim(ClaimTypes.GroupSid, user.IdHocKy));
+                        claims.Add(new Claim(ClaimTypes.NameIdentifier, user.IdSinhVien));
+                        claims.Add(new Claim(ClaimTypes.Role, "sinh-vien"));
+                        controllerName = "SinhViens";
+                        actionName = "Home";
+                    }
+                }
 				else if (modelLogin.Role == "giang-vien-chu-nhiem")
 				{
-					var user = await _context.Gvcns.Where(a => a.TenDangNhap == modelLogin.Username && a.MatKhau == modelLogin.Password).FirstOrDefaultAsync();
-					claims.Add(new Claim(ClaimTypes.Name, user.TenDangNhap));
-					claims.Add(new Claim(ClaimTypes.NameIdentifier, user.IdGv));
-                    claims.Add(new Claim(ClaimTypes.UserData, user.IdLopNavigation.IdKhoa));
-                    claims.Add(new Claim(ClaimTypes.Role, "khoa"));
-                    controllerName = "Lops";
-					actionName = "Index";
-					id = user.IdLopNavigation.IdKhoa;
+                    var user = (from giangvien in _context.Gvcns
+                                join lop in _context.Lops on giangvien.IdLop equals lop.IdLop
+                                join sinhvien in _context.SinhViens on lop.IdLop equals sinhvien.IdLop
+                                join diemrenluyen in _context.DiemRenLuyens on sinhvien.IdSv equals diemrenluyen.IdSv
+                                join hocky in _context.HocKies on diemrenluyen.IdHocKy equals hocky.IdHocKy
+                                where sinhvien.TenDangNhap == modelLogin.Username && sinhvien.MatKhau == modelLogin.Password && sinhvien.BanCanSu == "0"
+                                select new
+                                {
+                                    TenDangNhap = sinhvien.TenDangNhap,
+                                    IdGiangVien = giangvien.IdGv,
+                                    IdHocKy = diemrenluyen.IdHocKy,
+
+                                }).FirstOrDefault();
+                    if (user != null)
+                    {
+                        claims.Add(new Claim(ClaimTypes.Name, user.TenDangNhap));
+                        claims.Add(new Claim(ClaimTypes.GroupSid, user.IdHocKy));
+                        claims.Add(new Claim(ClaimTypes.NameIdentifier, user.IdGiangVien));
+                        claims.Add(new Claim(ClaimTypes.Role, "giang-vien-chu-nhiem"));
+                        controllerName = "SinhViens";
+                        actionName = "Index";
+
+                        
+                    }
 				}
 				else if (modelLogin.Role == "khoa")
 				{

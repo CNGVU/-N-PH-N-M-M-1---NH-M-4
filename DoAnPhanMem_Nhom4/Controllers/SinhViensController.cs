@@ -28,6 +28,15 @@ namespace DoAnPhanMem_Nhom4.Controllers
                 var dbQuanLyDiemRenLuyenContext = _context.SinhViens.Include(s => s.IdLopNavigation).Where(a => a.IdLop == id).ToList();
                 return View(dbQuanLyDiemRenLuyenContext);
             }
+            else if(type == "gvcn")
+            {
+                var dbQuanLyDiemRenLuyenContext = (from sv in _context.SinhViens
+                                                  join lop in _context.Lops on sv.IdLop equals lop.IdLop
+                                                  join gvcn in _context.Gvcns on lop.IdLop equals gvcn.IdLop
+                                                  select new { sv, lop, gvcn }).ToListAsync()
+                                                  ;
+                return View(dbQuanLyDiemRenLuyenContext);
+            }
             else
             {
                 var dbQuanLyDiemRenLuyenContext = _context.SinhViens.Where(a => a.IdLopNavigation.IdKhoa == id).Include(s => s.IdLopNavigation);
