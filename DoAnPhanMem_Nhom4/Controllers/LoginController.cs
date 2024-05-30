@@ -41,11 +41,14 @@ namespace DoAnPhanMem_Nhom4.Controllers
 				{
 					var user = await _context.SinhViens.Where(a=> a.TenDangNhap == modelLogin.Username && a.MatKhau == modelLogin.Password 
 																&& a.BanCanSu == "0" ).FirstOrDefaultAsync();
-					claims.Add(new Claim(ClaimTypes.Name, user.TenDangNhap));
-					claims.Add(new Claim(ClaimTypes.NameIdentifier, user.IdSv));
-					claims.Add(new Claim(ClaimTypes.Role, "sinh-vien"));
-					controllerName = "DiemRenLuyens";
-					actionName = "";
+					if(user != null)
+					{
+                        claims.Add(new Claim(ClaimTypes.Name, user.TenDangNhap));
+                        claims.Add(new Claim(ClaimTypes.NameIdentifier, user.IdSv));
+                        claims.Add(new Claim(ClaimTypes.Role, "sinh-vien"));
+                        controllerName = "SinhViens"; 
+                        actionName = "Home";
+                    }
 				}
 				else if (modelLogin.Role == "ban-can-su")
 				{
@@ -61,15 +64,17 @@ namespace DoAnPhanMem_Nhom4.Controllers
 					var user = await _context.Gvcns.Where(a => a.TenDangNhap == modelLogin.Username && a.MatKhau == modelLogin.Password).FirstOrDefaultAsync();
 					claims.Add(new Claim(ClaimTypes.Name, user.TenDangNhap));
 					claims.Add(new Claim(ClaimTypes.NameIdentifier, user.IdGv));
-					controllerName = "DiemRenLuyens";
-					actionName = "";
-
+                    claims.Add(new Claim(ClaimTypes.UserData, user.IdLopNavigation.IdKhoa));
+                    claims.Add(new Claim(ClaimTypes.Role, "khoa"));
+                    controllerName = "Lops";
+					actionName = "Index";
+					id = user.IdLopNavigation.IdKhoa;
 				}
 				else if (modelLogin.Role == "khoa")
 				{
 					var user = await _context.Khoas.Where(a => a.TaiKhoan == modelLogin.Username && a.MatKhau == modelLogin.Password).FirstOrDefaultAsync();
-					claims.Add(new Claim(ClaimTypes.Name, user.TaiKhoan));
-					claims.Add(new Claim(ClaimTypes.NameIdentifier, user.IdKhoa));
+					claims.Add(new Claim(ClaimTypes.Name, user.TaiKhoan)); 
+                    claims.Add(new Claim(ClaimTypes.UserData, user.IdKhoa));
                     claims.Add(new Claim(ClaimTypes.Role, "khoa"));
                     controllerName = "Lops";
 					actionName = "Index" ;
@@ -79,18 +84,19 @@ namespace DoAnPhanMem_Nhom4.Controllers
 				{
 					var user = await _context.Pctsvs.Where(a => a.TenDangNhap == modelLogin.Username && a.MatKhau == modelLogin.Password).FirstOrDefaultAsync();
 					claims.Add(new Claim(ClaimTypes.Name, user.TenDangNhap));
-					claims.Add(new Claim(ClaimTypes.NameIdentifier, user.IdCb));
-					controllerName = "DiemRenLuyens";
-					actionName = "";
+					claims.Add(new Claim(ClaimTypes.NameIdentifier, user.IdCb)); 
+                    claims.Add(new Claim(ClaimTypes.Role, "khoa"));
+                    controllerName = "Khoas";
+					actionName = "Index";
 				}
 				else if (modelLogin.Role == "hoi-dong-danh-gia")
 				{
 					var user = await _context.ThanhVienHoiDongs.Where(a => a.TenDangNhap == modelLogin.Username && a.MatKhau == modelLogin.Password).FirstOrDefaultAsync();
 					claims.Add(new Claim(ClaimTypes.Name, user.TenDangNhap));
 					claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Id));
-					controllerName = "DiemRenLuyens";
-					actionName = "AssessmentCommitteeScore";
-				}
+                    controllerName = "Khoas";
+                    actionName = "Index";
+                }
 				var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 				AuthenticationProperties properties = new AuthenticationProperties()
 				{

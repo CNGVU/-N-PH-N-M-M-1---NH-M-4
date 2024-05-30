@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DoAnPhanMem_Nhom4.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.ComponentModel.Design;
+using Newtonsoft.Json.Linq;
+using System.Security.Claims;
 
 namespace DoAnPhanMem_Nhom4.Controllers
 {
@@ -18,20 +21,47 @@ namespace DoAnPhanMem_Nhom4.Controllers
         {
             _context = context;
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Search(string values, string typeSearch)
+        {
+            return RedirectToAction(nameof(Index), new { values, typeSearch });
+
+        }
 
         // GET: Gvcns
-        public IActionResult Index(string? id)
+        public async Task<IActionResult> Index(string? values, string? typeSearch)
         {
-            var dbQuanLyDiemRenLuyenContext = from gvcn in _context.Gvcns
-                                              join lop in _context.Lops on gvcn.IdLop equals lop.IdLop
-                                              where gvcn.IdGv == id
-                                              select new { 
-                                                TenGVCN = gvcn.TenGv,
-                                                TenLop = lop.TenLop,
-                                                  IdGVCN = gvcn.IdGv    
-                                              };
-            ViewBag.List = dbQuanLyDiemRenLuyenContext.ToList();
-            return View();
+            string? IdKhoa = User.FindFirst(ClaimTypes.UserData)?.Value;
+
+            List<string> type = new List<string>
+            {
+                new string("Lớp"),
+                new string("Tên") 
+            };
+            ViewData["TypeSearch"] = new SelectList(type);
+            var list = _context.Gvcns.Where(a=> a.IdLopNavigation.IdKhoa == IdKhoa).Include(a=>a.IdLopNavigation);
+
+            if (values != null)
+            {
+                values = values.Trim();
+
+                 
+                if (typeSearch == "Lớp")
+                {
+                    var listResult = list.Where(a => a.IdLopNavigation.TenLop.ToLower().Contains(values.ToLower()));
+                    return View(listResult);
+                } 
+                if (typeSearch == "Tên")
+                {
+                    var listResult = list.Where(a => a.TenGv.ToLower().Contains(values.ToLower()));
+                    return View(listResult);
+                }
+            }
+
+
+            return View(await list.ToListAsync());
+ 
         }
 
         // GET: Gvcns/Details/5

@@ -213,6 +213,7 @@ namespace DoAnPhanMem_Nhom4.Controllers
                 return NotFound();
             }
             ViewData["IdHocKy"] = new SelectList(_context.HocKies, "IdHocKy", "TenHocKy");
+            ViewBag.TrueOrFalse = "true";
             return View(sinhVien);
         }
 
@@ -221,58 +222,73 @@ namespace DoAnPhanMem_Nhom4.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreatePoint(string idSV, string idHocKy)
         {
-            var idDRLStr = _context.DiemRenLuyens.OrderByDescending(a => a.Id).Select(a => a.Id).First();
-            var listTieuChi = _context.NoiDungTieuChis.Include(a => a.IdMucNavigation);
-            var listResult = new List<DiemRenLuyen>();
-            int id = Convert.ToInt32(idDRLStr.Substring(3));
-            string resulitId = "";
-            foreach (var item in listTieuChi)
+            if (_context.DiemRenLuyens.Where(s=> s.IdSv == idSV && s.IdHocKy == idHocKy).FirstOrDefault() == null)
             {
-                DiemRenLuyen diemRenLuyen = new DiemRenLuyen();
-                diemRenLuyen.IdSv = idSV;
-                diemRenLuyen.IdHocKy = idHocKy;
-                diemRenLuyen.IdNoiDung = item.IdNoiDung;
-                diemRenLuyen.IdMinhChung = "MC00000001";
-                diemRenLuyen.DiemSv = 0;
-                diemRenLuyen.DiemGv = 0;
-                diemRenLuyen.DiemBcs = 0;
-                diemRenLuyen.DiemKhoa = 0;
-                diemRenLuyen.DiemHoiDongDanhGia = 0;
-                id++;
-                if (id < 10)
+                var idDRLStr = _context.DiemRenLuyens.OrderByDescending(a => a.Id).Select(a => a.Id).First();
+                var listTieuChi = _context.NoiDungTieuChis.Include(a => a.IdMucNavigation);
+                var listResult = new List<DiemRenLuyen>();
+                int id = Convert.ToInt32(idDRLStr.Substring(3));
+                string resulitId = "";
+                foreach (var item in listTieuChi)
                 {
-                    resulitId = "DRL000000" + (id).ToString();
-                }
-                else if (id < 100)
-                {
-                    resulitId = "DRL00000" + (id).ToString();
-                }
-                else if (id < 1000)
-                {
-                    resulitId = "DRL0000" + (id).ToString();
-                }
-                else if (id < 10000)
-                {
-                    resulitId = "DRL000" + (id).ToString();
-                }
-                else if (id < 100000)
-                {
-                    resulitId = "DRL00" + (id).ToString();
-                }
-                else if (id < 1000000)
-                {
-                    resulitId = "DRL0" + (id).ToString();
+                    DiemRenLuyen diemRenLuyen = new DiemRenLuyen();
+                    diemRenLuyen.IdSv = idSV;
+                    diemRenLuyen.IdHocKy = idHocKy;
+                    diemRenLuyen.IdNoiDung = item.IdNoiDung;
+                    diemRenLuyen.IdMinhChung = "MC00000001";
+                    diemRenLuyen.DiemSv = 0;
+                    diemRenLuyen.DiemGv = 0;
+                    diemRenLuyen.DiemBcs = 0;
+                    diemRenLuyen.DiemKhoa = 0;
+                    diemRenLuyen.DiemHoiDongDanhGia = 0;
+                    id++;
+                    if (id < 10)
+                    {
+                        resulitId = "DRL000000" + (id).ToString();
+                    }
+                    else if (id < 100)
+                    {
+                        resulitId = "DRL00000" + (id).ToString();
+                    }
+                    else if (id < 1000)
+                    {
+                        resulitId = "DRL0000" + (id).ToString();
+                    }
+                    else if (id < 10000)
+                    {
+                        resulitId = "DRL000" + (id).ToString();
+                    }
+                    else if (id < 100000)
+                    {
+                        resulitId = "DRL00" + (id).ToString();
+                    }
+                    else if (id < 1000000)
+                    {
+                        resulitId = "DRL0" + (id).ToString();
+                    }
+
+                    diemRenLuyen.Id = resulitId;
+                    listResult.Add(diemRenLuyen);
                 }
 
-                diemRenLuyen.Id = resulitId;
-                listResult.Add(diemRenLuyen);
+                await _context.AddRangeAsync(listResult);
+
+                await _context.SaveChangesAsync();
+                ViewBag.TrueOrFalse = "true";
+                ViewBag.Mess = "Thêm thành công";
             }
-
-            await _context.AddRangeAsync(listResult);
-
-            await _context.SaveChangesAsync();
+            else
+            {
+                ViewBag.TrueOrFalse = "false";
+                ViewBag.Mess = "Điểm đã tồn tại";
+            }
+            ViewData["IdHocKy"] = new SelectList(_context.HocKies, "IdHocKy", "TenHocKy");
             return View();
         }
 
+        public async Task<IActionResult> Home()
+        {
+            return View();
+        }
     }
 }

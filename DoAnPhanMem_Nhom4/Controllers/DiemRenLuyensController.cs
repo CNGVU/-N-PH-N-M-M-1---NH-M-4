@@ -24,7 +24,7 @@ namespace DoAnPhanMem_Nhom4.Controllers
         }
 
         
-        public IActionResult AssessmentCommitteeScore(string id)
+        public IActionResult AssessmentCommitteeScore(string id )
         {
             var dbQuanLyDiemRenLuyenContext = _context.DiemRenLuyens.Include(d => d.IdHocKy).Include(d => d.IdMinhChung).Include(d => d.IdNoiDung).Include(d => d.IdSv);
             var result = from drl in _context.DiemRenLuyens
@@ -35,7 +35,7 @@ namespace DoAnPhanMem_Nhom4.Controllers
                          join mc in _context.MinhChungs on drl.IdMinhChung equals mc.Id
                          join lop in _context.Lops on sv.IdLop equals lop.IdLop
                          join khoa in _context.Khoas on lop.IdKhoa equals khoa.IdKhoa
-                         where sv.IdSv == id
+                         where sv.IdSv == id 
                          select new
                          {
                              MaSV = sv.IdSv,
@@ -163,9 +163,71 @@ namespace DoAnPhanMem_Nhom4.Controllers
             return RedirectToAction(nameof(FacultyScore), new { id = diems.First().MaSV }); // Chuyển hướng sau khi lưu thành công
         }
 
-        public IActionResult Index1()
+        ////
+        public IActionResult StudentScore(string id)
         {
-            return View();
+            var dbQuanLyDiemRenLuyenContext = _context.DiemRenLuyens.Include(d => d.IdHocKy).Include(d => d.IdMinhChung).Include(d => d.IdNoiDung).Include(d => d.IdSv);
+            var result = from drl in _context.DiemRenLuyens
+                         join ndtc in _context.NoiDungTieuChis on drl.IdNoiDung equals ndtc.IdNoiDung
+                         join mtc in _context.MucTieuChis on ndtc.IdMuc equals mtc.IdMuc
+                         join hk in _context.HocKies on drl.IdHocKy equals hk.IdHocKy
+                         join sv in _context.SinhViens on drl.IdSv equals sv.IdSv
+                         join mc in _context.MinhChungs on drl.IdMinhChung equals mc.Id
+                         join lop in _context.Lops on sv.IdLop equals lop.IdLop
+                         join khoa in _context.Khoas on lop.IdKhoa equals khoa.IdKhoa
+                         where sv.IdSv == id
+                         select new
+                         {
+                             MaSV = sv.IdSv,
+                             TenSV = sv.TenSv,
+                             Lop = lop.TenLop,
+                             Khoa = khoa.TenKhoa,
+                             TenMuc = mtc.TenMuc,
+                             TenNoiDung = ndtc.TenNoiDung,
+                             DiemToiDa = ndtc.DiemToiDa,
+                             IdDRL = drl.Id,
+                             DiemSV = drl.DiemSv,
+                             HinhAnhMC = mc.HinhAnh
+
+                         };
+
+
+            ViewBag.Name = result.First();
+            return View(result);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> SaveStudentScore(List<DiemSV_ID> diems)
+        {
+            foreach (var item in diems)
+            {
+                if (item.IdDRL == null)
+                {
+                    return NotFound();
+                }
+
+                var pointToUpdate = await _context.DiemRenLuyens.FirstOrDefaultAsync(d => d.Id == item.IdDRL);
+
+                if (pointToUpdate == null)
+                {
+                    return NotFound();
+                }
+
+                // Cập nhật các điểm
+                pointToUpdate.DiemKhoa = (decimal?)item.DiemSV;
+
+                try
+                {
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    // Xử lý ngoại lệ nếu có
+                    throw;
+                }
+            }
+
+            return RedirectToAction(nameof(StudentScore), new { id = diems.First().MaSV }); // Chuyển hướng sau khi lưu thành công
         }
     }
 }

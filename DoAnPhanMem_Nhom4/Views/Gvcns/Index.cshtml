@@ -45,7 +45,7 @@
                 <div class="bg-light rounded h-100 p-4">
                     <h3 style="text-align: center;" class="mb-4">Phiếu đánh giá điểm rèn luyện</h3>
                  
-                    <form class="d-none d-md-flex ms-4">
+                    <form class="d-none d-md-flex ms-4" asp-items="ViewBag.TypeSearch">
                         <div class="col-sm-2">
                             <div class="bg-light rounded h-100 p-4">
                                 <h6 style="line-height: 2.5;" class="mb-4">Search</h6>
@@ -55,17 +55,14 @@
                         <div class="col-sm-3">
                             <div class="bg-light rounded h-100 p-4">
 
-                                <select class="form-select mb-3" aria-label="Default select example">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                <select class="form-select mb-3" aria-label="Default select example" name="typeSearch" asp-items="ViewBag.TypeSearch">
+                                     
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-3">
                             <div class="bg-light rounded h-100 p-4">
-                                <input class="form-control border-0" type="search" placeholder="Search" />
+                                <input name="values" class="form-control border-0" type="search" placeholder="Search" />
                             </div>
                         </div>
 
@@ -87,20 +84,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                   @foreach (var item in ViewBag.List) {
+                                   @foreach (var item in Model) {
                                     <tr>
                                         <td scope="row">
-                                            @item.TenGVCN 
+                                            @Html.DisplayFor(modelItem => item.TenGv)
                                         </td>
 
                                         <td>
-                                            @item.TenLop 
+                                            @Html.DisplayFor(modelItem => item.IdLop)
                                         </td>
                                        @if(User.IsInRole("admin")){
                                             <td>
-                                                <a asp-action="Edit" asp-route-id="@item.IdGVCN">Edit</a> |
-                                                <a asp-action="Details" asp-route-id="@item.IdGVCN">Details</a> |
-                                                <a asp-action="Delete" asp-route-id="@item.IdGVCN">Delete</a>
+                                                <a asp-action="Edit" asp-route-id="@Html.DisplayFor(modelItem => item.IdGv)">Edit</a> |
+                                                <a asp-action="Details" asp-route-id="@Html.DisplayFor(modelItem => item.IdGv)">Details</a> |
+                                                <a asp-action="Delete" asp-route-id="@Html.DisplayFor(modelItem => item.IdGv)">Delete</a>
                                             </td>
                                        }
 

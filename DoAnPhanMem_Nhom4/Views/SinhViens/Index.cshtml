@@ -98,15 +98,43 @@
                                         </td>
                                         <td scope="row">
                                             @Html.DisplayFor(modelItem => item.TenSv)
+                                        </td><td scope="row">
+                                            @Html.DisplayFor(modelItem => item.BanCanSu)
                                         </td>
 
 
-                                        @if (User.IsInRole("admin"))
+                                        @if (User.IsInRole("khoa"))
                                         {
                                             <td>
-                                                <a asp-action="Edit" asp-route-id="@item.IdSv">Edit</a> |
-                                                <a asp-action="Details" asp-route-id="@item.IdSv">Details</a> |
-                                                <a asp-action="Delete" asp-route-id="@item.IdSv">Delete</a>
+                                                <a class="btn btn-primary" asp-action="FacultyScore" asp-controller="DiemRenLuyens" asp-route-id="@item.IdSv">Chấm điểm</a>
+                                            </td>
+                                        }
+                                        @if (User.IsInRole("ban-can-su"))
+                                        {
+                                            <td>
+                                                <a class="btn btn-primary" asp-action="FacultyScore" asp-controller="DiemRenLuyens" asp-route-id="@item.IdSv">Chấm điểm</a>
+
+                                            </td>
+                                        }
+                                        @if (User.IsInRole("giang-vien-chu-nhiem"))
+                                        {
+                                            <td>
+                                                <a class="btn btn-primary" asp-action="FacultyScore" asp-controller="DiemRenLuyens" asp-route-id="@item.IdSv">Chấm điểm</a>
+
+                                            </td>
+                                        }
+                                        @if (User.IsInRole("phong-cong-tac-sinh-vien"))
+                                        {
+                                            <td>
+                                                <a class="btn btn-primary" asp-action="FacultyScore" asp-controller="DiemRenLuyens" asp-route-id="@item.IdSv">Chấm điểm</a>
+
+                                            </td>
+                                        }
+                                        @if (User.IsInRole("hoi-dong-danh-gia"))
+                                        {
+                                            <td>
+                                                <a class="btn btn-primary" asp-action="AssessmentCommitteeScore" asp-controller="DiemRenLuyens" asp-route-id="@item.IdSv">Chấm điểm</a>
+
                                             </td>
                                         }
 

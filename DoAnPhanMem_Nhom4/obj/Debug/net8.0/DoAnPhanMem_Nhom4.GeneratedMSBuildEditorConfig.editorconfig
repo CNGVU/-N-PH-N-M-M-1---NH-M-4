@@ -50,6 +50,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGllbVJlbkx1eWVuc1xGYWN1bHR5U2NvcmUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/Workspace/DH_SPKT/223/DoAnPhanMem/Code/DoAnPhanMem_Nhom4/DoAnPhanMem_Nhom4/Views/DiemRenLuyens/StudentScore.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGllbVJlbkx1eWVuc1xTdHVkZW50U2NvcmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/Workspace/DH_SPKT/223/DoAnPhanMem/Code/DoAnPhanMem_Nhom4/DoAnPhanMem_Nhom4/Views/Gvcns/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3ZjbnNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -236,6 +240,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/Workspace/DH_SPKT/223/DoAnPhanMem/Code/DoAnPhanMem_Nhom4/DoAnPhanMem_Nhom4/Views/SinhViens/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2luaFZpZW5zXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Workspace/DH_SPKT/223/DoAnPhanMem/Code/DoAnPhanMem_Nhom4/DoAnPhanMem_Nhom4/Views/SinhViens/Home.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2luaFZpZW5zXEhvbWUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/Workspace/DH_SPKT/223/DoAnPhanMem/Code/DoAnPhanMem_Nhom4/DoAnPhanMem_Nhom4/Views/SinhViens/Index.cshtml]
